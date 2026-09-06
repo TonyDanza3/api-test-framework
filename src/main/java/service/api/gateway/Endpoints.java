@@ -1,7 +1,7 @@
 package service.api.gateway;
 
-import etc.Endpoint;
-import etc.HttpMethod;
+import core.endpoint.Endpoint;
+import core.endpoint.HttpMethod;
 
 public enum Endpoints {
     HEALTH(new Endpoint(HttpMethod.GET, "/health")),

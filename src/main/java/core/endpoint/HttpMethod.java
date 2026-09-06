@@ -1,4 +1,4 @@
-package etc;
+package core.endpoint;
 
 public enum HttpMethod {
     POST,
