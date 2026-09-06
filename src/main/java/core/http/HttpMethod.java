@@ -1,4 +1,4 @@
-package core.endpoint;
+package core.http;
 
 public enum HttpMethod {
     POST,

@@ -1,7 +1,7 @@
 package service.auth.service;
 
 import core.endpoint.Endpoint;
-import core.endpoint.HttpMethod;
+import core.http.HttpMethod;
 
 public enum Endpoints {
     HEALTH(new Endpoint(HttpMethod.GET, "/health")),
