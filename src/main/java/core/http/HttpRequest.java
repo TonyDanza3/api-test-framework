@@ -13,7 +13,7 @@ import java.util.HashMap;
 public class HttpRequest {
     private static final Logger LOGGER = LogManager.getLogger();
 
-    public static Response send(Endpoint endpoint) {
+    public static Response send(Endpoint endpoint, int expectedStatusCode) {
         Response response = new RestAssuredResponseImpl();
         switch (endpoint.method()) {
             case GET:
@@ -21,6 +21,7 @@ public class HttpRequest {
                 response = RestAssured.given(HttpSpecification.getRequestSpecification())
                         .get(endpoint.endpoint())
                         .then()
+                        .statusCode(expectedStatusCode)
                         .spec(HttpSpecification.getResponseSpecification())
                         .extract().response();
                 break;
@@ -29,7 +30,7 @@ public class HttpRequest {
         return response;
     }
 
-    public static Response send(Endpoint endpoint, HashMap<String, String> headers) {
+    public static Response send(Endpoint endpoint, HashMap<String, String> headers, int expectedStatusCode) {
         Response response = new RestAssuredResponseImpl();
         switch (endpoint.method()) {
             case GET:
@@ -38,6 +39,7 @@ public class HttpRequest {
                         .headers(headers)
                         .get(endpoint.endpoint())
                         .then()
+                        .statusCode(expectedStatusCode)
                         .log().all()//временно
                         .spec(HttpSpecification.getResponseSpecification())
                         .extract()
@@ -48,7 +50,7 @@ public class HttpRequest {
         return response;
     }
 
-    public static Response send(Endpoint endpoint, Object body) {
+    public static Response send(Endpoint endpoint, Object body, int expectedStatusCode) {
         Response response = new RestAssuredResponseImpl();
         switch (endpoint.method()) {
             case POST:
@@ -58,6 +60,7 @@ public class HttpRequest {
                         .body(body)
                         .post(endpoint.endpoint())
                         .then()
+                        .statusCode(expectedStatusCode)
                         .spec(HttpSpecification.getResponseSpecification())
                         .extract().response();
                 break;

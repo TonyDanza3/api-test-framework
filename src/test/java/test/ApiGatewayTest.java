@@ -12,11 +12,11 @@ public class ApiGatewayTest {
 
     @Test
     public void healthEndpointTest() {
-        assertEquals(HEALTHY_RESPONSE, send(HEALTH.getEndpoint()).getBody().asString().trim(), "Body is incorrect");
+        assertEquals(HEALTHY_RESPONSE, send(HEALTH.getEndpoint(), 200).getBody().asString().trim(), "Body is incorrect");
     }
 
     @Test
     public void readyEndpointTest() {
-        assertEquals(HEALTHY_RESPONSE, send(READY.getEndpoint()).getBody().asString().trim(), "Body is incorrect");
+        assertEquals(HEALTHY_RESPONSE, send(READY.getEndpoint(), 200).getBody().asString().trim(), "Body is incorrect");
     }
 }

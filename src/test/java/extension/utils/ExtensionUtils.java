@@ -2,7 +2,7 @@ package extension.utils;
 
 import java.util.Random;
 
-public class ExtentionUtils {
+public class ExtensionUtils {
     private static final Random random = new Random();
 
     public static String generateRandomString() {

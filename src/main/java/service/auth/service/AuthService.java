@@ -15,11 +15,11 @@ public class AuthService {
     private static final Logger LOGGER = LogManager.getLogger();
 
     public static Response registerUser(String email, String password, String username) {
-        return send(REGISTER.getEndpoint(), new UserRegisterBody(email, password, username));
+        return send(REGISTER.getEndpoint(), new UserRegisterBody(email, password, username), 201);
     }
 
     public static Response loginForUser(String email, String password) {
-        Response response = send(LOGIN.getEndpoint(), new dto.request.UserLoginBody(email, password));
+        Response response = send(LOGIN.getEndpoint(), new dto.request.UserLoginBody(email, password), 200);
         UserLoginBody user = response.getBody().as(UserLoginBody.class);
         LOGGER.log(Level.INFO, "Successfully logged user and got his access token " + user.accessToken());
         return response;

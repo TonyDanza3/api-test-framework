@@ -13,16 +13,13 @@ import static org.hamcrest.Matchers.*;
 public class HttpSpecification {
     public static ResponseSpecification getResponseSpecification() {
         return new ResponseSpecBuilder()
-                .expectStatusCode(allOf(greaterThanOrEqualTo(200), lessThanOrEqualTo(299)))
+//                .expectStatusCode(allOf(greaterThanOrEqualTo(200), lessThanOrEqualTo(299)))
                 .build();
     }
 
     public static RequestSpecification getRequestSpecification() {
         return new RequestSpecBuilder().setBaseUri(Config.BASE_URL)
                 .addHeader("Content-Type", "application/json")
-                .build()
-//                .log()
-//                .all()
-                ;
+                .build();
     }
 }

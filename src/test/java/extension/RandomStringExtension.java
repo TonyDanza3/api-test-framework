@@ -7,7 +7,7 @@ import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.api.extension.ParameterResolutionException;
 import org.junit.jupiter.api.extension.ParameterResolver;
 
-import static extension.utils.ExtentionUtils.generateRandomString;
+import static extension.utils.ExtensionUtils.generateRandomString;
 
 public class RandomStringExtension implements ParameterResolver {
     @Override

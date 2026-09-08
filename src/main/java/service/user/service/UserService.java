@@ -12,6 +12,6 @@ public class UserService {
     public static Response getUserInfo(String authToken) {
         HashMap<String, String> headers = new HashMap<>();
         headers.put("Authorization", "Bearer " + authToken);
-        return send(ME.getEndpoint(), headers);
+        return send(ME.getEndpoint(), headers, 200);
     }
 }
