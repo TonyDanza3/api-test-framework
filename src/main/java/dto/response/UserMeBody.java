@@ -1,4 +1,4 @@
-package request.http.dto.user.response;
+package dto.response;
 
 import java.time.LocalDateTime;
 
