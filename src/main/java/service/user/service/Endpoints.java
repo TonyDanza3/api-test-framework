@@ -1,12 +1,10 @@
-package service.auth.service;
+package service.user.service;
 
 import core.endpoint.Endpoint;
 import core.http.HttpMethod;
 
 public enum Endpoints {
-    HEALTH(new Endpoint(HttpMethod.GET, "/health")),
-    REGISTER(new Endpoint(HttpMethod.POST, "/api/v1/auth/register")),
-    LOGIN(new Endpoint(HttpMethod.POST, "/api/v1/auth/login"))
+    ME(new Endpoint(HttpMethod.GET, "/api/v1/users/me"))
     ;
 
     private final Endpoint endpoint;

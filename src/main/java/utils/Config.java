@@ -7,8 +7,6 @@ public class Config {
     private static final Properties properties = new Properties();
     public static String BASE_URL = readProperty("BASE_URL");
 
-
-
     private static String readProperty(String propertyName) {
         try {
             String value;
