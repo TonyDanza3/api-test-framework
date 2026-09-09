@@ -1,6 +1,7 @@
 package core.http;
 
 import core.endpoint.Endpoint;
+import dto.request.auth.RequestBody;
 import io.restassured.RestAssured;
 import io.restassured.internal.RestAssuredResponseImpl;
 import io.restassured.response.Response;
@@ -9,6 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class HttpRequest {
     private static final Logger LOGGER = LogManager.getLogger();
@@ -30,7 +32,7 @@ public class HttpRequest {
         return response;
     }
 
-    public static Response send(Endpoint endpoint, HashMap<String, String> headers, int expectedStatusCode) {
+    public static Response send(Endpoint endpoint, Map<String, String> headers, int expectedStatusCode) {
         Response response = new RestAssuredResponseImpl();
         switch (endpoint.method()) {
             case GET:
@@ -40,7 +42,6 @@ public class HttpRequest {
                         .get(endpoint.endpoint())
                         .then()
                         .statusCode(expectedStatusCode)
-                        .log().all()//временно
                         .spec(HttpSpecification.getResponseSpecification())
                         .extract()
                         .response();
@@ -50,7 +51,7 @@ public class HttpRequest {
         return response;
     }
 
-    public static Response send(Endpoint endpoint, Object body, int expectedStatusCode) {
+    public static Response send(Endpoint endpoint, RequestBody body, int expectedStatusCode) {
         Response response = new RestAssuredResponseImpl();
         switch (endpoint.method()) {
             case POST:
@@ -68,10 +69,10 @@ public class HttpRequest {
         return response;
     }
 
-    private static String headersLogBuilder(HashMap<String, String> headers) {
+    private static String headersLogBuilder(Map<String, String> headers) {
         StringBuilder result = new StringBuilder();
         headers.entrySet().forEach(entry -> {
-            result.append(entry.getKey()).append( ": ").append(entry.getValue()).append("\n");
+            result.append(entry.getKey()).append(": ").append(entry.getValue()).append("\n");
         });
         return result.toString();
     }

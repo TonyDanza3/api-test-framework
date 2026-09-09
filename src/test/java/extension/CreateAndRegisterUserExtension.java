@@ -8,7 +8,7 @@ import org.junit.jupiter.api.extension.ParameterResolutionException;
 import org.junit.jupiter.api.extension.ParameterResolver;
 
 import static extension.utils.ExtensionUtils.generateRandomString;
-import static service.auth.service.AuthService.registerUser;
+import static service.auth.service.AuthServiceHttpRequests.registerUser;
 
 public class CreateAndRegisterUserExtension implements ParameterResolver {
     @Override

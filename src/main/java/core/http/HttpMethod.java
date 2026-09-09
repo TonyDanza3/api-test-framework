@@ -2,5 +2,7 @@ package core.http;
 
 public enum HttpMethod {
     POST,
-    GET;
+    GET,
+    PUT,
+    DELETE;
 }

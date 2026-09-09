@@ -1,4 +1,4 @@
 package dto.request.auth;
 
-public record UserLoginBody(String email, String password) {
+public record UserLoginBody(String email, String password) implements RequestBody {
 }
