@@ -26,20 +26,6 @@ Black-box API tests for the trading-platform microservices (`../trading-platform
 | Logging | Log4j2 2.26 (console, INFO) |
 | Database | PostgreSQL JDBC 42.7 |
 
-## Architecture
-
-```mermaid
-flowchart TD
-  tests[JUnit tests] --> extensions[Parameter resolvers]
-  tests --> clients[Service HTTP clients]
-  extensions --> clients
-  clients --> http[HttpRequest plus RestAssured]
-  clients --> dto[Request and response records]
-  tests --> db[Postgres checks]
-  http --> gateway[API gateway :8080]
-  db --> postgres[Postgres :5432]
-```
-
 | Layer | Package | Role |
 |---|---|---|
 | Core | `core.http`, `core.endpoint`, `core.Postgres` | Send HTTP, hold method+path, open JDBC |
