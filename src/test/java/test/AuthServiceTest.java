@@ -39,4 +39,9 @@ public class AuthServiceTest {
     public void loginWithInvalidPassword(@User dto.User user) {
         send(LOGIN.getEndpoint(),  new dto.request.UserLoginBody(user.login(), "invalidPasswd"), 401);
     }
+
+    @Test
+    public void loginWithInvalidLogin(@User dto.User user) {
+        send(LOGIN.getEndpoint(),  new dto.request.UserLoginBody("invalidLogin", user.password()), 400);
+    }
 }
