@@ -1,5 +1,6 @@
 package test;
 
+import dto.response.instruments.Instruments;
 import extension.UserTokenExtension;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -10,7 +11,7 @@ public class MarketDataServiceTest {
 
     @Test
     public void getInstruments(@extension.utils.UserToken String userToken) {
-        MarketDataServiceHttpRequests.getInstruments(userToken);
+        Instruments instruments = MarketDataServiceHttpRequests.getInstruments(userToken);
     }
 
     @Test

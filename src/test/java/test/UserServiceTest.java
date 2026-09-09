@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import dto.response.auth.UserLoginBody;
 import dto.response.user.UserMeBody;
-import service.user.service.UserService;
+import service.user.service.UserServiceHttpRequests;
 
 import static service.auth.service.AuthServiceHttpRequests.loginForUser;
 import static service.auth.service.AuthServiceHttpRequests.registerUser;
@@ -21,7 +21,7 @@ public class UserServiceTest {
     public void ableToGetInfoAboutLoggedUser(@RandomEmail String email, @RandomString String password, @RandomString String userName) {
         registerUser(email,password, userName);
         String authToken = loginForUser(email, password).getBody().as(UserLoginBody.class).accessToken();
-        UserMeBody userInfoFromUserMe = UserService.getUserInfo(authToken).getBody().as(UserMeBody.class);
+        UserMeBody userInfoFromUserMe = UserServiceHttpRequests.getUserInfo(authToken).getBody().as(UserMeBody.class);
         SoftAssertions assertions = new SoftAssertions();
         assertions.assertThat(!userInfoFromUserMe.id().isEmpty());
         assertions.assertThat(userInfoFromUserMe.email().equals(email));
