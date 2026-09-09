@@ -1,11 +1,9 @@
 package dto.response.instruments;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
 
-public record Instruments(
-        List<Instrument> items,
+public record InstrumentsResponseBody(
+        List<InstrumentResponseBody> items,
         Long page,
         Long pageSize,
         Long total

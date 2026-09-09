@@ -1,9 +1,8 @@
 package dto.response.instruments;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
-public record Instrument(
+public record InstrumentResponseBody(
         String id,
         String symbol,
         String name,

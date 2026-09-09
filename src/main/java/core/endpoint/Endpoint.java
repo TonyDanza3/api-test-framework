@@ -4,5 +4,5 @@ import core.http.HttpMethod;
 
 public record Endpoint(
         HttpMethod method,
-        String endpoint) {
+        String url) {
 }

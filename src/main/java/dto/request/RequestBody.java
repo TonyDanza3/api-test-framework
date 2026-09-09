@@ -1,4 +1,4 @@
-package dto.request.auth;
+package dto.request;
 
 public interface RequestBody {
 }
