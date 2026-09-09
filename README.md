@@ -2,7 +2,6 @@
 
 Black-box API tests for the trading-platform microservices (`../trading-platform`). Requests go through the API gateway; some market-data checks also read Postgres.
 
-Repo: [`trading-platform-tests`](https://github.com/TonyDanza3/api-test-framework)
 
 ## What it covers
 
