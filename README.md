@@ -3,16 +3,6 @@
 Black-box API tests for the trading-platform microservices (`../trading-platform`). Requests go through the API gateway; some market-data checks also read Postgres.
 
 
-## What it covers
-
-| Service | Port (direct) | How tests hit it |
-|---|---|---|
-| api-gateway | 8080 | Public entry. All HTTP calls use `BASE_URL` (gateway). |
-| auth-service | 8082 | Via gateway `/api/v1/auth/*` |
-| user-service | 8083 | Via gateway `/api/v1/users/*` |
-| market-data-service | 8084 | Via gateway `/api/v1/instruments*` |
-| postgres | 5432 | Direct JDBC from market-data tests |
-
 ## Tech stack
 
 | Piece | Version / lib |
@@ -26,13 +16,16 @@ Black-box API tests for the trading-platform microservices (`../trading-platform
 | Logging | Log4j2 2.26 (console, INFO) |
 | Database | PostgreSQL JDBC 42.7 |
 
-| Layer | Package | Role |
+## What it covers
+
+| Service | Port (direct) | How tests hit it |
 |---|---|---|
-| Core | `core.http`, `core.endpoint`, `core.Postgres` | Send HTTP, hold method+path, open JDBC |
-| DTOs | `dto.request.*`, `dto.response.*` | Jackson records for bodies |
-| Clients | `service.<name>.service` | Endpoint enums + `*HttpRequests` (and Postgres helpers for market-data) |
-| Tests | `src/test/java/test` | One class per service |
-| Fixtures | `src/test/java/extension` | JUnit 5 `ParameterResolver`s for users, tokens, random data |
+| api-gateway | 8080 | Public entry. All HTTP calls use `BASE_URL` (gateway). |
+| auth-service | 8082 | Via gateway `/api/v1/auth/*` |
+| user-service | 8083 | Via gateway `/api/v1/users/*` |
+| market-data-service | 8084 | Via gateway `/api/v1/instruments*` |
+| postgres | 5432 | Direct JDBC from market-data tests |
+
 
 ## How to run
 
