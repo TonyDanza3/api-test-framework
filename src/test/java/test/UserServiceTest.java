@@ -1,20 +1,18 @@
 package test;
 
-import extension.CreateAndRegisterUserExtension;
 import extension.EmailExtension;
 import extension.RandomStringExtension;
 import extension.utils.RandomEmail;
 import extension.utils.RandomString;
-import extension.utils.User;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import dto.response.UserLoginBody;
-import dto.response.UserMeBody;
+import dto.response.auth.UserLoginBody;
+import dto.response.user.UserMeBody;
 import service.user.service.UserService;
 
-import static service.auth.service.AuthService.loginForUser;
-import static service.auth.service.AuthService.registerUser;
+import static service.auth.service.AuthServiceHttpRequests.loginForUser;
+import static service.auth.service.AuthServiceHttpRequests.registerUser;
 
 @ExtendWith({EmailExtension.class, RandomStringExtension.class})
 public class UserServiceTest {

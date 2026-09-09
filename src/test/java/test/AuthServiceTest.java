@@ -1,7 +1,7 @@
 package test;
 
 import core.http.HttpRequest;
-import dto.request.UserRegisterBody;
+import dto.request.auth.UserRegisterBody;
 import extension.CreateAndRegisterUserExtension;
 import extension.EmailExtension;
 import extension.RandomStringExtension;
@@ -12,7 +12,7 @@ import io.restassured.response.Response;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import dto.response.UserLoginBody;
+import dto.response.auth.UserLoginBody;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -22,7 +22,7 @@ import java.util.stream.Stream;
 import static core.http.HttpRequest.send;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
-import static service.auth.service.AuthService.loginForUser;
+import static service.auth.service.AuthServiceHttpRequests.loginForUser;
 import static service.auth.service.Endpoints.LOGIN;
 import static service.auth.service.Endpoints.REGISTER;
 
@@ -49,12 +49,12 @@ public class AuthServiceTest {
 
     @Test
     public void loginWithInvalidPassword(@User dto.User user) {
-        send(LOGIN.getEndpoint(), new dto.request.UserLoginBody(user.login(), "invalidPasswd"), 401);
+        send(LOGIN.getEndpoint(), new dto.request.auth.UserLoginBody(user.login(), "invalidPasswd"), 401);
     }
 
     @Test
     public void loginWithInvalidLogin(@User dto.User user) {
-        send(LOGIN.getEndpoint(), new dto.request.UserLoginBody("invalidLogin", user.password()), 400);
+        send(LOGIN.getEndpoint(), new dto.request.auth.UserLoginBody("invalidLogin", user.password()), 400);
     }
 
     public static Stream<Arguments> userSource() {
